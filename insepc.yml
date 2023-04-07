@@ -1,0 +1,100 @@
+name: cms-ars-5.0-red-hat-enterprise-linux-7-stig-overlay
+title: cms-ars-5.0-red-hat-enterprise-linux-7-stig-overlay
+maintainer: CMS SAF team
+copyright: .
+copyright_email: saf@cms.hhs.gov
+license: Apache-2.0
+summary: "CMS ARS 5.0 Overlay InSpec Validation Profile for RHEL7 STIG"
+version: 1.3.1
+inspec_version: ">= 4.0"
+
+depends:
+- name: redhat-enterprise-linux-7-stig-baseline
+  url: https://github.com/mitre/redhat-enterprise-linux-7-stig-baseline/archive/main.tar.gz
+
+inputs:
+  - name: system_categorization
+    desc: "Selected system baseline based on the environment variable"
+    type: String
+    value: <%= ENV['BASELINE'].nil? ? 'Moderate (Default)' : ENV['BASELINE'] %>
+
+  - name: org_name 
+    desc: "Name of the organization running this profile"
+    type: String
+    value: "CMS"
+    profile: redhat-enterprise-linux-7-stig-baseline
+
+
+  - name: overlay_controls
+    desc: 'List of inapplicable controls in ARS 5.0 based on the system categorization'
+    type: Array
+    <% if ENV['BASELINE'] == 'High-HVA' %>
+    value: []
+    <% elsif ENV['BASELINE'] == 'High' %>
+    value: []
+    <% elsif ENV['BASELINE'] == 'Moderate-HVA' %>
+    value: 
+      - "SV-204513" # AU-5 (1)
+      - "SV-204514" # AU-5 (1)
+      - "SV-204515" # AU-5 (1)
+      - "SV-204576" # AC-10
+    <% elsif ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'].nil? %> # Default
+    value: 
+      - "SV-204513" # AU-5 (1)
+      - "SV-204514" # AU-5 (1)
+      - "SV-204515" # AU-5 (1)
+      - "SV-204576" # AC-10
+    <% elsif ENV['BASELINE'] == 'Low-HVA' %>
+    value: 
+      - "SV-204396" # AC-11  
+      - "SV-204398" # AC-11
+      - "SV-204399" # AC-11
+      - "SV-204400" # AC-11
+      - "SV-204402" # AC-11
+      - "SV-204403" # AC-11
+      - "SV-204404" # AC-11
+      - "SV-204450" # IA-3 
+      - "SV-204486" # CM-7 (2)
+      - "SV-204513" # AU-5 (1) 
+      - "SV-204514" # AU-5 (1) 
+      - "SV-204515" # AU-5 (1) 
+      - "SV-204516" # AC-10 
+      - "SV-204576" # AC-10 
+      - "SV-204579" # SC-10, AC-12
+      - "SV-204581" # AC-17 (2)
+      - "SV-204582" # AC-17 (2)
+      - "SV-204583" # AC-17 (2)
+      - "SV-204587" # SC-10, AC-12
+      - "SV-204589" # SC-10, AC-12
+      - "SV-204595" # AC-17 (2)
+      - "SV-204634" # AC-18 (1), AC-18 (1), SC-8
+      - "SV-214800" # SI-4 (5)
+      - "SV-214937" # AC-11
+    <% elsif ENV['BASELINE'] == 'Low' %> 
+    value: 
+      - "SV-204396" # AC-11  
+      - "SV-204398" # AC-11
+      - "SV-204399" # AC-11
+      - "SV-204400" # AC-11
+      - "SV-204402" # AC-11
+      - "SV-204403" # AC-11
+      - "SV-204404" # AC-11
+      - "SV-204450" # IA-3 
+      - "SV-204486" # CM-7 (2)
+      - "SV-204513" # AU-5 (1) 
+      - "SV-204514" # AU-5 (1) 
+      - "SV-204515" # AU-5 (1) 
+      - "SV-204516" # AC-10 
+      - "SV-204576" # AC-10 
+      - "SV-204579" # SC-10, AC-12
+      - "SV-204581" # AC-17 (2)
+      - "SV-204582" # AC-17 (2)
+      - "SV-204583" # AC-17 (2)
+      - "SV-204587" # SC-10, AC-12
+      - "SV-204589" # SC-10, AC-12
+      - "SV-204595" # AC-17 (2)
+      - "SV-204634" # AC-18 (1), AC-18 (1), SC-8
+      - "SV-214800" # SI-4 (5)
+      - "SV-214937" # AC-11 
+    <% end %>
+
