@@ -14,3 +14,108 @@ include_controls 'redhat-enterprise-linux-7-stig-baseline' do
 
   
   ## NIST tags updated due to changes between NIST SP 800-53 rev 4 and rev 5 (https://csrc.nist.gov/csrc/media/Publications/sp/800-53/rev-5/final/documents/sp800-53r4-to-r5-comparison-workbook.xlsx)
+
+  ## IA-2(6) incorporates withdrawn control IA-2(11)
+  control 'SV-204397' do
+    tag nist: ["IA-2 (6)"]
+  end
+
+  control 'SV-204631' do
+    tag nist: ["IA-2 (6)", "IA-2 (12)", "IA-2 (12)"]
+  end
+
+  control 'SV-204632' do
+    tag nist: ["IA-2 (6)", "IA-2 (12)", "IA-2 (12)"]
+  end
+
+  control 'SV-204633' do
+    tag nist: ["IA-2 (6)", "IA-2 (12)", "IA-2 (12)"]
+  end
+
+  ## AC-2(3) incorporates withdrawn control IA-4 e
+  control 'SV-204426' do
+    tag nist: ["AC-2 (3)"]
+  end
+
+  ## CM-14 incorporates withdrawn control CM-5 (3)
+  control 'SV-204447' do
+    tag nist: ["CM-14"]
+  end
+
+  control 'SV-204448' do
+    tag nist: ["CM-14"]
+  end
+
+  control 'SV-214799' do
+    tag nist: ["CM-14"]
+  end
+  
+  ## SC-45 (1) incorporates withdrawn control AU-8 (1)
+  control 'SV-204603' do
+    tag nist: ["SC-45 (1)"]
+  end
+
+## Controls with tag UM-1
+control 'SV-219059' do
+  tag nist: ["CM-6 b", "IA-3", "IA-3"]
+end
+
+control 'SV-228563' do
+  tag nist: ["CM-6 b"]
+end
+
+control 'SV-228564' do
+  tag nist: ["AU-9 a", "AU-9 a", "AU-9 a", "SI-11 b"]
+end
+
+control 'SV-233307' do
+  tag nist: ["CM-6 b"]
+end
+
+control 'SV-237633' do
+  tag nist: ["CM-6 b"]
+end
+
+control 'SV-237634' do
+  tag nist: ["AC-16 (2)"]
+end
+
+control 'SV-237636' do
+  tag nist: ["IA-11"]
+end
+
+control 'SV-244557' do
+  tag nist: ["AC-3"]
+end
+
+control 'SV-244558' do
+  tag nist: ["AC-3"]
+end
+
+control 'SV-250312' do
+  tag nist: ["AC-3 (4)", "AC-6 (10)"]
+end
+
+control 'SV-250313' do
+  tag nist: ["AC-3 (4)", "AC-6 (10)"]
+end
+
+control 'SV-250314' do
+  tag nist: ["AC-3 (4)", "AC-6 (10)"]
+end
+
+control 'SV-251702' do
+  tag nist: ["CM-6 b"]
+end
+
+control 'SV-251703' do
+  tag nist: ["CM-6 b"]
+end
+
+control 'SV-251704' do
+  tag nist: ["IA-11"]
+end
+
+control 'SV-251705' do
+  tag nist: ["SI-6"]
+end
