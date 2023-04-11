@@ -17,7 +17,7 @@ include_controls 'redhat-enterprise-linux-7-stig-baseline' do
 
   ## IA-2(6) incorporates withdrawn control IA-2(11)
   control 'SV-204397' do
-    tag nist: ["IA-2 (6)"]
+    tag nist: ["IA-2 (6)", "IA-2 (12)", "IA-2 (12)"]
   end
 
   control 'SV-204631' do
@@ -54,68 +54,3 @@ include_controls 'redhat-enterprise-linux-7-stig-baseline' do
   control 'SV-204603' do
     tag nist: ["SC-45 (1)"]
   end
-
-## Controls with tag UM-1
-control 'SV-219059' do
-  tag nist: ["CM-6 b", "IA-3", "IA-3"]
-end
-
-control 'SV-228563' do
-  tag nist: ["CM-6 b"]
-end
-
-control 'SV-228564' do
-  tag nist: ["AU-9 a", "AU-9 a", "AU-9 a", "SI-11 b"]
-end
-
-control 'SV-233307' do
-  tag nist: ["CM-6 b"]
-end
-
-control 'SV-237633' do
-  tag nist: ["CM-6 b"]
-end
-
-control 'SV-237634' do
-  tag nist: ["AC-16 (2)"]
-end
-
-control 'SV-237636' do
-  tag nist: ["IA-11"]
-end
-
-control 'SV-244557' do
-  tag nist: ["AC-3"]
-end
-
-control 'SV-244558' do
-  tag nist: ["AC-3"]
-end
-
-control 'SV-250312' do
-  tag nist: ["AC-3 (4)", "AC-6 (10)"]
-end
-
-control 'SV-250313' do
-  tag nist: ["AC-3 (4)", "AC-6 (10)"]
-end
-
-control 'SV-250314' do
-  tag nist: ["AC-3 (4)", "AC-6 (10)"]
-end
-
-control 'SV-251702' do
-  tag nist: ["CM-6 b"]
-end
-
-control 'SV-251703' do
-  tag nist: ["CM-6 b"]
-end
-
-control 'SV-251704' do
-  tag nist: ["IA-11"]
-end
-
-control 'SV-251705' do
-  tag nist: ["SI-6"]
-end
