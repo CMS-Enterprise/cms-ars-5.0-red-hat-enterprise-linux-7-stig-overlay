@@ -129,12 +129,14 @@ inputs:
       - "SV-204514" # AU-5 (1)
       - "SV-204515" # AU-5 (1)
       - "SV-204576" # AC-10
+      - "SV-251705" # SI-6
     <% elsif ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'].nil? %> # Default
     value: 
       - "SV-204513" # AU-5 (1)
       - "SV-204514" # AU-5 (1)
       - "SV-204515" # AU-5 (1)
       - "SV-204576" # AC-10
+      - "SV-251705" # SI-6
     <% elsif ENV['BASELINE'] == 'Low-HVA' %>
     value: 
       - "SV-204396" # AC-11  
@@ -161,6 +163,11 @@ inputs:
       - "SV-204634" # AC-18 (1), AC-18 (1), SC-8
       - "SV-214800" # SI-4 (5)
       - "SV-214937" # AC-11
+      - "SV-237634" # AC-6 (5)
+      - "SV-251705" # SI-6
+      - "SV-254523" # AC-2 (2)
+      - "SV-255926" # AC-11
+      - "SV-255927" # SC-4
     <% elsif ENV['BASELINE'] == 'Low' %> 
     value: 
       - "SV-204396" # AC-11  
@@ -187,5 +194,10 @@ inputs:
       - "SV-204634" # AC-18 (1), AC-18 (1), SC-8
       - "SV-214800" # SI-4 (5)
       - "SV-214937" # AC-11 
+      - "SV-237634" # AC-6 (5)
+      - "SV-251705" # SI-6
+      - "SV-254523" # AC-2 (2)
+      - "SV-255926" # AC-11
+      - "SV-255927" # SC-4
     <% end %>
 
