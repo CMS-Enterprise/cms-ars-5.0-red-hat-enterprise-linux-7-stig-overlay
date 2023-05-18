@@ -32,7 +32,7 @@ inputs:
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline
 
-  - name: storage_space_left
+  - name: min_space_left
     desc: Amount of audit storage volume left
     type: Numeric
     <% if ENV['BASELINE'] == 'High' || ENV['BASELINE'] == 'High-HVA' %>
@@ -50,7 +50,7 @@ inputs:
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline
 
-  - name: days_of_inactivity
+  - name: max_days_of_inactivity
     desc: Maximum number of days if account inactivity before account lockout
     type: Numeric
     <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
@@ -60,23 +60,53 @@ inputs:
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline
 
-  - name: system_inactivity_timeout
-    desc: Maximum system inactivity timeout (time in seconds).
+ # SV-204579 // ## should be 30 mins for h & m
+  - name: expected_system_activity_timeout
+    desc: System activity timeout (time in seconds).
     type: Numeric
-    value: 900 ## should be 30 mins for h & m
+    <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' || ENV['BASELINE'].nil? || ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Moderate-HVA' %>
+    value: 1800
     profile: redhat-enterprise-linux-7-stig-baseline 
 
-  - name: client_alive_interval 
-    desc: Interval of network connections associated with SSH 
+  # SV-204579
+  - name: max_system_activity_timeout
+    desc: Maximum system activity timeout (time in seconds) allowed by policy.
     type: Numeric
-    value: 1800 ## should be 30 mins for h & m
+    <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' || ENV['BASELINE'].nil? || ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Moderate-HVA' %>
+    value: 1800
+    profile: redhat-enterprise-linux-7-stig-baseline 
+
+   # SV-204587
+  - name: expected_client_alive_interval
+    desc: Expected specific value of the client alive interval (time in seconds).
+    type: Numeric
+    <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' || ENV['BASELINE'].nil? || ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Moderate-HVA' %>
+    value: 1800
+    profile: redhat-enterprise-linux-7-stig-baseline 
+
+  # SV-204587
+  - name: max_client_alive_interval
+    desc: Maximum allowed client alive interval (time in seconds).
+    type: Numeric
+    <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' || ENV['BASELINE'].nil? || ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Moderate-HVA' %>
+    value: 1800
+    profile: redhat-enterprise-linux-7-stig-baseline 
+
+    # SV-204576
+  - name: expected_maxlogins_limit
+    desc: "Expected value for the maxlogins setting."
+    type: Numeric
+    <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
+    value: 1
+    <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline
 
-  - name: maxlogins_limit
-    desc: Amount of max logins allowed
-    type: String
+  # SV-204576
+  - name: max_maxlogins_limit
+    desc: "The maxium value that can be used for maxlogins by policy."
+    type: Numeric
     <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
-    value: '1'
+    value: 1
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline
 
@@ -93,7 +123,7 @@ inputs:
     profile: redhat-enterprise-linux-7-stig-baseline
 
   - name: banner_message_text_cli
-    description: The bannermessage text for command line interface logins.
+    description: The banner message text for command line interface logins.
     type: string
     value: "* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
   * This system is provided for Government authorized use only.
