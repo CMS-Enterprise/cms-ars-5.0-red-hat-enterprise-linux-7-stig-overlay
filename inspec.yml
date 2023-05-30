@@ -18,12 +18,14 @@ inputs:
     type: String
     value: <%= ENV['BASELINE'].nil? ? 'Moderate (Default)' : ENV['BASELINE'] %>
 
+  # SV-204393, SV-204394, SV-204395, SV-204397, SV-204426, SV-204431, SV-204447, SV-204448, SV-204497, SV-204578, SV-204580, SV-204595, SV-204603, SV-204631, SV-204632, SV-204633
   - name: org_name 
     desc: "Name of the organization running this profile"
     type: String
     value: "CMS"
     profile: redhat-enterprise-linux-7-stig-baseline
 
+  # SV-204513, SV-204514
   - name: storage_volume
     desc: Amount of audit storage volume
     type: Numeric
@@ -32,6 +34,7 @@ inputs:
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline
 
+  # SV-204513
   - name: min_space_left
     desc: Amount of audit storage volume left
     type: Numeric
@@ -50,6 +53,7 @@ inputs:
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline
 
+  # SV-204426
   - name: max_days_of_inactivity
     desc: Maximum number of days if account inactivity before account lockout
     type: Numeric
@@ -60,7 +64,7 @@ inputs:
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline
 
- # SV-204579 // ## should be 30 mins for h & m
+ # SV-204579
   - name: expected_system_activity_timeout
     desc: System activity timeout (time in seconds).
     type: Numeric
@@ -110,6 +114,37 @@ inputs:
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline
 
+  # SV-204398, SV-204399, SV-204400, SV-204402, SV-204403, SV-214937
+  - name: lockout_time
+    desc: Minimum amount of time account must be locked out after failed logins (in minutes)
+    type: Numeric
+    <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' || ENV['BASELINE'].nil? || ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Moderate-HVA' %>
+    value: 15
+    profile: redhat-enterprise-linux-7-stig-baseline
+
+  # SV-204427, SV-204428, SV-255928
+  - name: expected_unsuccessful_attempts
+    desc: number of unsuccessful attempts
+    type: Numeric
+    <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
+    value: 3
+    <% elsif ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Moderate-HVA' || ENV['BASELINE'] == 'Low' || ENV['BASELINE'] == 'Low-HVA' || ENV['BASELINE'].nil? %>
+    value: 5
+    profile: redhat-enterprise-linux-7-stig-baseline
+
+  # SV-204427, SV-204428, SV-255928
+  - name: expected_fail_interval
+    desc: Interval of time in which the consecutive failed logon attempts must occur in order for the account to be locked out (time in seconds)
+    type: Numeric
+    value: 7200
+
+  #SV-254523
+  - name: emergency_account_disable
+    desc: Expiration time for an emergency account (in hours)
+    type: Numeric
+    value : 72
+
+  # SV-204393, SV-203394
   - name: banner_message_text_gui
     description: The banner message text for GUI logins.
     type: string
@@ -122,6 +157,7 @@ inputs:
   - Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose"
     profile: redhat-enterprise-linux-7-stig-baseline
 
+  # SV-204395
   - name: banner_message_text_cli
     description: The banner message text for command line interface logins.
     type: string
@@ -134,6 +170,7 @@ inputs:
   - Any communication or data transiting or stored on this system may be disclosed or used for any lawful Government purpose"
     profile: redhat-enterprise-linux-7-stig-baseline
 
+  # SV-204580
   - name: banner_message_text_ral
     description: The banner message text for remote access logins.
     type: string
@@ -230,4 +267,3 @@ inputs:
       - "SV-255926" # AC-11
       - "SV-255927" # SC-4
     <% end %>
-
