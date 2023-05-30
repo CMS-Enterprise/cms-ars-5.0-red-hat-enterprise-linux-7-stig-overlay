@@ -43,16 +43,6 @@ inputs:
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline 
 
-  - name: unsuccessful_attempts
-    desc: Maximum number of unsuccessful attempts before lockout
-    type: Numeric
-    <% if ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Moderate-HVA' || ENV['BASELINE'] == 'Low' || ENV['BASELINE'] == 'Low-HVA' || ENV['BASELINE'].nil? %>
-    value: 5
-    <% else %>
-    value: 3
-    <% end %>
-    profile: redhat-enterprise-linux-7-stig-baseline
-
   # SV-204426
   - name: max_days_of_inactivity
     desc: Maximum number of days if account inactivity before account lockout
