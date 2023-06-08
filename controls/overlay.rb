@@ -54,3 +54,4 @@ include_controls 'redhat-enterprise-linux-7-stig-baseline' do
   control 'SV-204603' do
     tag nist: ["SC-45 (1)"]
   end
+end
