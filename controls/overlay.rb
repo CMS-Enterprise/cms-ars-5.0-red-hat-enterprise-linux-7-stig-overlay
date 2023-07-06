@@ -8,42 +8,42 @@ include_controls 'redhat-enterprise-linux-7-stig-baseline' do
 
   ## IA-2(6) incorporates withdrawn control IA-2(11)
   control 'SV-204397' do
-    tag nist: ["IA-2 (6)", "IA-2 (12)", "IA-2 (12)"]
+    tag nist: ['IA-2 (6)', 'IA-2 (12)', 'IA-2 (12)']
   end
 
   control 'SV-204631' do
-    tag nist: ["IA-2 (6)", "IA-2 (12)", "IA-2 (12)"]
+    tag nist: ['IA-2 (6)', 'IA-2 (12)', 'IA-2 (12)']
   end
 
   control 'SV-204632' do
-    tag nist: ["IA-2 (6)", "IA-2 (12)", "IA-2 (12)"]
+    tag nist: ['IA-2 (6)', 'IA-2 (12)', 'IA-2 (12)']
   end
 
   control 'SV-204633' do
-    tag nist: ["IA-2 (6)", "IA-2 (12)", "IA-2 (12)"]
+    tag nist: ['IA-2 (6)', 'IA-2 (12)', 'IA-2 (12)']
   end
 
   ## AC-2(3) incorporates withdrawn control IA-4 e
   control 'SV-204426' do
-    tag nist: ["AC-2 (3)"]
+    tag nist: ['AC-2 (3)']
   end
 
   ## CM-14 incorporates withdrawn control CM-5 (3)
   control 'SV-204447' do
-    tag nist: ["CM-14"]
+    tag nist: ['CM-14']
   end
 
   control 'SV-204448' do
-    tag nist: ["CM-14"]
+    tag nist: ['CM-14']
   end
 
   control 'SV-214799' do
-    tag nist: ["CM-14"]
+    tag nist: ['CM-14']
   end
   
   ## SC-45 (1) incorporates withdrawn control AU-8 (1)
   control 'SV-204603' do
-    tag nist: ["SC-45 (1)"]
+    tag nist: ['SC-45 (1)']
   end
 
   unless overlay_controls.empty?
