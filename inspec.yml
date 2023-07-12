@@ -89,6 +89,17 @@ inputs:
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline 
 
+  # SV-204423
+  - name: min_len
+    desc: Minimum number of characters a password needs, by policy
+    type: Numeric
+    <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'Moderate-HVA' || ENV['BASELINE'] == 'Low-HVA'  %>
+    value: 20
+    <% elsif ENV['BASELINE'] == 'High' || ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Low' || ENV['BASELINE'].nil? %>
+    value: 15
+    <% end %>
+    profile: redhat-enterprise-linux-7-stig-baseline 
+
     # SV-204576
   - name: expected_maxlogins_limit
     desc: "Expected value for the maxlogins setting."
@@ -107,7 +118,7 @@ inputs:
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline
 
-  # SV-204398, SV-204399, SV-204400, SV-204402, SV-204403, SV-214937
+  # SV-204399, SV-204400, SV-204402, SV-204403, SV-214937
   - name: lockout_time
     desc: Minimum amount of time account must be locked out after failed logins (in minutes)
     type: Numeric
