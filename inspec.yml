@@ -150,6 +150,24 @@ inputs:
     type: Numeric
     value: 72
 
+  #SV-204407
+  - name: min_uppercase_characters
+    desc: "New password must contain at least one upper-case character"
+    type: Numeric
+      <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
+    value: 3
+    <% end %>
+    profile: redhat-enterprise-linux-7-stig-baseline
+
+    #SV-204408
+  - name: min_lowercase_characters
+    desc: "New password must contain at least one lower-case character"
+    type: Numeric
+      <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
+    value: 3
+    <% end %>
+    profile: redhat-enterprise-linux-7-stig-baseline
+
   # SV-204393, SV-203394
   - name: banner_message_text_gui
     description: The banner message text for GUI logins.
