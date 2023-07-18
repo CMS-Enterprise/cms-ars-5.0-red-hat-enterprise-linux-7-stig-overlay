@@ -161,7 +161,7 @@ inputs:
 
   #SV-204407
   - name: min_uppercase_characters
-    desc: "New password must contain at least one upper-case character"
+    desc: "The new password must contain the minimum number of upper-case characters"
     type: Numeric
       <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
     value: 3
@@ -170,7 +170,7 @@ inputs:
 
     #SV-204408
   - name: min_lowercase_characters
-    desc: "New password must contain at least one lower-case character"
+    desc: "The new password must contain the minimum number of lower-case characters"
     type: Numeric
       <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
     value: 3
