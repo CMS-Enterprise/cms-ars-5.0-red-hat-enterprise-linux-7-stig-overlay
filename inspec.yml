@@ -128,7 +128,7 @@ inputs:
     profile: redhat-enterprise-linux-7-stig-baseline
 
   # SV-204427, SV-204428, SV-255928
-  - name: expected_unsuccessful_attempts
+  - name: unsuccessful_attempts
     desc: number of unsuccessful attempts
     type: Numeric
     <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
@@ -139,7 +139,7 @@ inputs:
     profile: redhat-enterprise-linux-7-stig-baseline
 
   # SV-204427, SV-204428, SV-255928
-  - name: expected_fail_interval
+  - name: fail_interval
     desc: Interval of time in which the consecutive failed logon attempts must occur in order for the account to be locked out (time in seconds)
     type: Numeric
     value: 7200
