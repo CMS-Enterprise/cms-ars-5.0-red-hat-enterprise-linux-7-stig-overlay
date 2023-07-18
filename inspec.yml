@@ -43,7 +43,7 @@ inputs:
     profile: redhat-enterprise-linux-7-stig-baseline 
 
   # SV-204426
-  - name: max_days_of_inactivity
+  - name: days_of_inactivity
     desc: Maximum number of days if account inactivity before account lockout
     type: Numeric
     <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
