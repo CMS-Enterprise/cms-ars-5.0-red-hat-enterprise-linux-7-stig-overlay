@@ -43,7 +43,7 @@ inputs:
     profile: redhat-enterprise-linux-7-stig-baseline 
 
   # SV-204426
-  - name: max_days_of_inactivity
+  - name: days_of_inactivity
     desc: Maximum number of days if account inactivity before account lockout
     type: Numeric
     <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
@@ -128,7 +128,7 @@ inputs:
     profile: redhat-enterprise-linux-7-stig-baseline
 
   # SV-204427, SV-204428, SV-255928
-  - name: expected_unsuccessful_attempts
+  - name: unsuccessful_attempts
     desc: number of unsuccessful attempts
     type: Numeric
     <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
@@ -139,7 +139,7 @@ inputs:
     profile: redhat-enterprise-linux-7-stig-baseline
 
   # SV-204427, SV-204428, SV-255928
-  - name: expected_fail_interval
+  - name: fail_interval
     desc: Interval of time in which the consecutive failed logon attempts must occur in order for the account to be locked out (time in seconds)
     type: Numeric
     value: 7200
@@ -149,6 +149,15 @@ inputs:
     desc: Expiration time for an emergency account (in hours)
     type: Numeric
     value: 72
+
+  # SV-204422
+  - name: min_reuse_generations
+    desc: Number of reuse generations
+    type: Numeric
+    <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'Moderate-HVA' || ENV['BASELINE'] == 'Low-HVA' %>
+    value: 400 # ARS 5 states that password reuse is disallowed and 400 is the maximum value RHEL can accommodate
+    <% end %>
+    profile: redhat-enterprise-linux-7-stig-baseline
 
   #SV-204407
   - name: min_uppercase_characters
