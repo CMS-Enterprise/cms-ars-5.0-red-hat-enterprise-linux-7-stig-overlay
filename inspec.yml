@@ -95,7 +95,7 @@ inputs:
     type: Numeric
     <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'Moderate-HVA' || ENV['BASELINE'] == 'Low-HVA'  %>
     value: 20
-    <% elsif ENV['BASELINE'] == 'High' || ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Low' || ENV['BASELINE'].nil? %>
+    <% elsif ENV['BASELINE'] == 'High' || ENV['BASELINE'].nil? || ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Low' || ENV['BASELINE'].nil? %>
     value: 15
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline 
@@ -133,7 +133,7 @@ inputs:
     type: Numeric
     <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
     value: 3
-    <% elsif ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Moderate-HVA' || ENV['BASELINE'] == 'Low' || ENV['BASELINE'] == 'Low-HVA' || ENV['BASELINE'].nil? %>
+    <% elsif ENV['BASELINE'].nil? || ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Moderate-HVA' || ENV['BASELINE'] == 'Low' || ENV['BASELINE'] == 'Low-HVA' || ENV['BASELINE'].nil? %>
     value: 5
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline
@@ -143,12 +143,14 @@ inputs:
     desc: Interval of time in which the consecutive failed logon attempts must occur in order for the account to be locked out (time in seconds)
     type: Numeric
     value: 7200
+    profile: redhat-enterprise-linux-7-stig-baseline
 
   #SV-254523
   - name: emergency_account_disable
     desc: Expiration time for an emergency account (in hours)
     type: Numeric
     value: 72
+    profile: redhat-enterprise-linux-7-stig-baseline
 
   # SV-204422
   - name: min_reuse_generations
@@ -222,7 +224,11 @@ inputs:
     <% if ENV['BASELINE'] == 'High-HVA' %>
     value: []
     <% elsif ENV['BASELINE'] == 'High' %>
-    value: []
+    value: 
+      - "SV-204418" # IA-5 (1)
+      - "SV-204419" # IA-5 (1)
+      - "SV-204420" # IA-5 (1)
+      - "SV-204421" # IA-5 (1)
     <% elsif ENV['BASELINE'] == 'Moderate-HVA' %>
     value: 
       - "SV-204513" # AU-5 (1)
@@ -232,6 +238,10 @@ inputs:
       - "SV-251705" # SI-6
     <% elsif ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'].nil? %> # Default
     value: 
+      - "SV-204418" # IA-5 (1)
+      - "SV-204419" # IA-5 (1)
+      - "SV-204420" # IA-5 (1)
+      - "SV-204421" # IA-5 (1)
       - "SV-204513" # AU-5 (1)
       - "SV-204514" # AU-5 (1)
       - "SV-204515" # AU-5 (1)
@@ -246,6 +256,7 @@ inputs:
       - "SV-204402" # AC-11
       - "SV-204403" # AC-11
       - "SV-204404" # AC-11
+      - "SV-204426" # IA-4
       - "SV-204450" # IA-3 
       - "SV-204486" # CM-7 (2)
       - "SV-204513" # AU-5 (1) 
@@ -277,6 +288,11 @@ inputs:
       - "SV-204402" # AC-11
       - "SV-204403" # AC-11
       - "SV-204404" # AC-11
+      - "SV-204418" # IA-5 (1)
+      - "SV-204419" # IA-5 (1)
+      - "SV-204420" # IA-5 (1)
+      - "SV-204421" # IA-5 (1)
+      - "SV-204426" # IA-4
       - "SV-204450" # IA-3 
       - "SV-204486" # CM-7 (2)
       - "SV-204513" # AU-5 (1) 
