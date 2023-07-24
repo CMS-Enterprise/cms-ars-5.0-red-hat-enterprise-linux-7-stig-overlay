@@ -179,7 +179,8 @@ inputs:
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline
 
-  - name: min_numueric_characters
+  # SV-204409
+  - name: min_numeric_characters
     desc: The number of minimum numeric characters needed in a password
     type: Numeric
     <% if ENV['BASELINE'] == 'High' %>
@@ -235,8 +236,10 @@ inputs:
     <% if ENV['BASELINE'] == 'High-HVA' %>
     value: 
       - "SV-204409" # IA-5 (1)
+      - "SV-204410" # IA-5 (1)
     <% elsif ENV['BASELINE'] == 'High' %>
     value: 
+      - "SV-204410" # IA-5 (1)
       - "SV-204418" # IA-5 (1)
       - "SV-204419" # IA-5 (1)
       - "SV-204420" # IA-5 (1)
@@ -248,9 +251,11 @@ inputs:
       - "SV-204515" # AU-5 (1)
       - "SV-204576" # AC-10
       - "SV-204409" # IA-5 (1)
+      - "SV-204410" # IA-5 (1)
       - "SV-251705" # SI-6
     <% elsif ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'].nil? %> # Default
     value: 
+      - "SV-204410" # IA-5 (1)
       - "SV-204418" # IA-5 (1)
       - "SV-204419" # IA-5 (1)
       - "SV-204420" # IA-5 (1)
@@ -270,6 +275,7 @@ inputs:
       - "SV-204403" # AC-11
       - "SV-204404" # AC-11
       - "SV-204409" # IA-5 (1)
+      - "SV-204410" # IA-5 (1)
       - "SV-204426" # IA-4
       - "SV-204450" # IA-3 
       - "SV-204486" # CM-7 (2)
@@ -302,6 +308,7 @@ inputs:
       - "SV-204402" # AC-11
       - "SV-204403" # AC-11
       - "SV-204404" # AC-11
+      - "SV-204410" # IA-5 (1)
       - "SV-204418" # IA-5 (1)
       - "SV-204419" # IA-5 (1)
       - "SV-204420" # IA-5 (1)
