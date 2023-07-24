@@ -165,7 +165,7 @@ inputs:
   - name: min_uppercase_characters
     desc: "The new password must contain the minimum number of upper-case characters"
     type: Numeric
-      <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
+    <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
     value: 3
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline
@@ -174,10 +174,21 @@ inputs:
   - name: min_lowercase_characters
     desc: "The new password must contain the minimum number of lower-case characters"
     type: Numeric
-      <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
+    <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
     value: 3
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline
+
+  - name: min_numueric_characters
+    desc: The number of minimum numeric characters needed in a password
+    type: Numeric
+    <% if ENV['BASELINE'] == 'High' %>
+    value: 3
+    <% elsif ENV['BASELINE'].nil? || ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Low' %>
+    value: -1
+    <% end %>
+    profile: redhat-enterprise-linux-7-stig-baseline
+
 
   # SV-204393, SV-203394
   - name: banner_message_text_gui
@@ -222,7 +233,8 @@ inputs:
     desc: 'List of inapplicable controls in ARS 5.0 based on the system categorization'
     type: Array
     <% if ENV['BASELINE'] == 'High-HVA' %>
-    value: []
+    value: 
+      - "SV-204409" # IA-5 (1)
     <% elsif ENV['BASELINE'] == 'High' %>
     value: 
       - "SV-204418" # IA-5 (1)
@@ -235,6 +247,7 @@ inputs:
       - "SV-204514" # AU-5 (1)
       - "SV-204515" # AU-5 (1)
       - "SV-204576" # AC-10
+      - "SV-204409" # IA-5 (1)
       - "SV-251705" # SI-6
     <% elsif ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'].nil? %> # Default
     value: 
@@ -256,6 +269,7 @@ inputs:
       - "SV-204402" # AC-11
       - "SV-204403" # AC-11
       - "SV-204404" # AC-11
+      - "SV-204409" # IA-5 (1)
       - "SV-204426" # IA-4
       - "SV-204450" # IA-3 
       - "SV-204486" # CM-7 (2)
