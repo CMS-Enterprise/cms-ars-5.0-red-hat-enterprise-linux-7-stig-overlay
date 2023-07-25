@@ -46,6 +46,28 @@ include_controls 'redhat-enterprise-linux-7-stig-baseline' do
     tag nist: ['SC-45 (1)']
   end
 
+  control 'SV-204577' do
+    title 'The Red Hat Enterprise Linux operating system must be configured to prohibit or restrict the use of
+      functions, ports, protocols, and/or services.'
+     desc 'check', 'Inspect the firewall configuration and running services to verify that it is configured to prohibit
+      or restrict the use of functions, ports, protocols, and/or services that are unnecessary or prohibited.
+      Check which services are currently active with the following command:
+      # firewall-cmd --list-all
+      public (default, active)
+      interfaces: enp0s3
+      sources:
+      services: dhcpv6-client dns http https ldaps rpc-bind ssh
+      ports:
+      masquerade: no
+      forward-ports:
+      icmp-blocks:
+      rich rules:
+      Verify the services allowed by the firewall match what is permitted by CMS.
+      If there are additional ports, protocols, or services that are not permitted, or there are ports, protocols,
+      or services that are prohibited by CMS, this is a finding.'
+    desc 'fix', "Update the host's firewall settings and/or running services to comply with the CMS requirements."
+  end
+    
   unless overlay_controls.empty?
     overlay_controls.each do |overlay_control|
       control overlay_control do
