@@ -56,17 +56,8 @@ inputs:
     profile: redhat-enterprise-linux-7-stig-baseline
 
  # SV-204579
-  - name: expected_system_activity_timeout
+  - name: system_activity_timeout
     desc: System activity timeout (time in seconds).
-    type: Numeric
-    <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' || ENV['BASELINE'].nil? || ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Moderate-HVA' %>
-    value: 1800
-    <% end %>
-    profile: redhat-enterprise-linux-7-stig-baseline 
-
-  # SV-204579
-  - name: max_system_activity_timeout
-    desc: Maximum system activity timeout (time in seconds) allowed by policy.
     type: Numeric
     <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' || ENV['BASELINE'].nil? || ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Moderate-HVA' %>
     value: 1800
@@ -102,17 +93,8 @@ inputs:
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline 
 
-    # SV-204576
-  - name: expected_maxlogins_limit
-    desc: "Expected value for the maxlogins setting."
-    type: Numeric
-    <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
-    value: 1
-    <% end %>
-    profile: redhat-enterprise-linux-7-stig-baseline
-
   # SV-204576
-  - name: max_maxlogins_limit
+  - name: maxlogins_limit
     desc: "The maxium value that can be used for maxlogins by policy."
     type: Numeric
     <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
@@ -288,21 +270,13 @@ inputs:
       - "SV-204513" # AU-5 (1) 
       - "SV-204514" # AU-5 (1) 
       - "SV-204515" # AU-5 (1) 
-      - "SV-204516" # AC-10 
+      - "SV-204516" # AC-6 (9) 
       - "SV-204576" # AC-10 
       - "SV-204579" # SC-10, AC-12
-      - "SV-204581" # AC-17 (2)
-      - "SV-204582" # AC-17 (2)
-      - "SV-204583" # AC-17 (2)
       - "SV-204587" # SC-10, AC-12
       - "SV-204589" # SC-10, AC-12
-      - "SV-204595" # AC-17 (2)
-      - "SV-204634" # AC-18 (1), AC-18 (1), SC-8
-      - "SV-214800" # SI-4 (5)
       - "SV-214937" # AC-11
-      - "SV-237634" # AC-6 (5)
       - "SV-251705" # SI-6
-      - "SV-254523" # AC-2 (2)
       - "SV-255926" # AC-11
       - "SV-255927" # SC-4
     <% elsif ENV['BASELINE'] == 'Low' %> 
@@ -325,7 +299,7 @@ inputs:
       - "SV-204513" # AU-5 (1) 
       - "SV-204514" # AU-5 (1) 
       - "SV-204515" # AU-5 (1) 
-      - "SV-204516" # AC-10 
+      - "SV-204516" # AC-6 (9) 
       - "SV-204576" # AC-10 
       - "SV-204579" # SC-10, AC-12
       - "SV-204581" # AC-17 (2)
@@ -335,11 +309,11 @@ inputs:
       - "SV-204589" # SC-10, AC-12
       - "SV-204595" # AC-17 (2)
       - "SV-204634" # AC-18 (1), AC-18 (1), SC-8
-      - "SV-214800" # SI-4 (5)
       - "SV-214937" # AC-11 
       - "SV-237634" # AC-6 (5)
       - "SV-251705" # SI-6
       - "SV-254523" # AC-2 (2)
+      - "SV-255925" # AC-17 (2)      
       - "SV-255926" # AC-11
       - "SV-255927" # SC-4
     <% end %>
