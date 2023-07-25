@@ -122,7 +122,11 @@ inputs:
   - name: lockout_time
     desc: Minimum amount of time account must be locked out after failed logins (in minutes)
     type: Numeric
-    <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' || ENV['BASELINE'].nil? || ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Moderate-HVA' %>
+    <% if ENV['BASELINE'] == 'High-HVA' || ENV['BASELINE'] == 'High' %>
+    value: 0 
+    <% elsif ENV['BASELINE'].nil? || ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'] == 'Moderate-HVA' %>
+    value: 60
+    <% elsif ENV['BASELINE'] == 'Low' || ENV['BASELINE'] == 'Low-HVA' %>
     value: 15
     <% end %>
     profile: redhat-enterprise-linux-7-stig-baseline
