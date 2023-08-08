@@ -46,6 +46,8 @@ include_controls 'redhat-enterprise-linux-7-stig-baseline' do
     tag nist: ['SC-45 (1)']
   end
 
+  ## SEMANTIC CHANGES
+
   control 'SV-204577' do
     title 'The Red Hat Enterprise Linux operating system must be configured to prohibit or restrict the use of
       functions, ports, protocols, and/or services.'
@@ -68,6 +70,12 @@ include_controls 'redhat-enterprise-linux-7-stig-baseline' do
     desc 'fix', "Update the host's firewall settings and/or running services to comply with the CMS requirements."
   end
     
+  control 'SV-204603' do
+    title "The Red Hat Enterprise Linux operating system must, for networked systems, synchronize clocks with a server
+    that is synchronized to one of the redundant United States Naval Observatory (USNO) time servers, a time server
+    designated for the appropriate #{input('org_name')[:acronym]} network."
+  end
+
   unless overlay_controls.empty?
     overlay_controls.each do |overlay_control|
       control overlay_control do

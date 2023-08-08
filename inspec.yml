@@ -172,7 +172,7 @@ inputs:
 
   # SV-204393, SV-203394
   - name: banner_message_text_gui
-    description: The banner message text for GUI logins.
+    desc: The banner message text for GUI logins.
     type: string
     value: "* This warning banner provides privacy and security notices consistent with applicable federal laws, directives, and other federal guidance for accessing this Government system, which includes (1) this computer network, (2) all computers connected to this network, and (3) all devices and storage media attached to this network or to a computer on this network.
     * This system is provided for Government authorized use only.
@@ -216,15 +216,18 @@ inputs:
     value: 
       - "SV-204409" # IA-5 (1)
       - "SV-204410" # IA-5 (1)
+      - "SV-204412" # IA-5 (1)
     <% elsif ENV['BASELINE'] == 'High' %>
     value: 
       - "SV-204410" # IA-5 (1)
+      - "SV-204412" # IA-5 (1)
       - "SV-204418" # IA-5 (1)
       - "SV-204419" # IA-5 (1)
       - "SV-204420" # IA-5 (1)
       - "SV-204421" # IA-5 (1)
     <% elsif ENV['BASELINE'] == 'Moderate-HVA' %>
     value: 
+      - "SV-204412" # IA-5 (1)
       - "SV-204513" # AU-5 (1)
       - "SV-204514" # AU-5 (1)
       - "SV-204515" # AU-5 (1)
@@ -235,6 +238,7 @@ inputs:
     <% elsif ENV['BASELINE'] == 'Moderate' || ENV['BASELINE'].nil? %> # Default
     value: 
       - "SV-204410" # IA-5 (1)
+      - "SV-204412" # IA-5 (1)
       - "SV-204418" # IA-5 (1)
       - "SV-204419" # IA-5 (1)
       - "SV-204420" # IA-5 (1)
@@ -255,6 +259,7 @@ inputs:
       - "SV-204404" # AC-11
       - "SV-204409" # IA-5 (1)
       - "SV-204410" # IA-5 (1)
+      - "SV-204412" # IA-5 (1)
       - "SV-204426" # IA-4
       - "SV-204450" # IA-3 
       - "SV-204486" # CM-7 (2)
@@ -280,6 +285,7 @@ inputs:
       - "SV-204403" # AC-11
       - "SV-204404" # AC-11
       - "SV-204410" # IA-5 (1)
+      - "SV-204412" # IA-5 (1)
       - "SV-204418" # IA-5 (1)
       - "SV-204419" # IA-5 (1)
       - "SV-204420" # IA-5 (1)
